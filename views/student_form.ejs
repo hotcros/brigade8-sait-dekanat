@@ -1,0 +1,16 @@
+<% layout('layout') -%>
+<h2><%= student ? 'Редагувати' : 'Новий' %> студент</h2>
+<form method="post" action="/students/save">
+  <% if (student) { %>
+    <input type="hidden" name="id" value="<%= student.id %>">
+  <% } %>
+  Прізвище: <input name="surname" value="<%= student?.surname || '' %>"><br>
+  Ім’я: <input name="name" value="<%= student?.name || '' %>"><br>
+  Група:
+  <select name="groupId">
+    <% groups.forEach(g => { %>
+      <option value="<%= g.id %>" <%= student?.groupId === g.id ? 'selected' : '' %>><%= g.name %></option>
+    <% }) %>
+  </select><br>
+  <button type="submit">Зберегти</button>
+</form>
