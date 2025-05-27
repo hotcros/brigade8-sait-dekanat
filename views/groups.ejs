@@ -1,11 +1,19 @@
-<% layout('layout') -%>
-<h2>Групи</h2>
-<a href="/groups/new">Додати групу</a>
-<ul>
-  <% groups.forEach(g => { %>
-    <li><%= g.name %> 
-      [<a href="/groups/edit/<%= g.id %>">ред.</a>] 
-      [<a href="/groups/delete/<%= g.id %>">x</a>]
-    </li>
-  <% }) %>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Групи (Метод: <%= method %>)</title>
+</head>
+<body>
+  <h1>Групи (Метод: <%= method %>)</h1>
+  <ul>
+    <% groups.forEach(group => { %>
+      <li><%= group.name %></li>
+    <% }); %>
+  </ul>
+  <hr>
+  <a href="/groups/sync">Синхронний</a> |
+  <a href="/groups/callback">Callback</a> |
+  <a href="/groups/promise">Promise</a> |
+  <a href="/groups/async">Async/Await</a>
+</body>
+</html>

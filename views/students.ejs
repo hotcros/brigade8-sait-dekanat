@@ -1,20 +1,19 @@
-<% layout('layout') -%>
-<h2>Студенти</h2>
-<a href="/students/new">Додати студента</a>
-
-<form method="get" action="/students/search">
-  <input type="text" name="surname" placeholder="Прізвище" value="<%= filter.surname || '' %>">
-  <input type="text" name="groupName" placeholder="Група" value="<%= filter.groupName || '' %>">
-  <button type="submit">Пошук</button>
-</form>
-
-<ul>
-  <% students.forEach(s => { %>
-    <li>
-      <%= s.surname %> <%= s.name %> — 
-      <%= groups.find(g => g.id === s.groupId)?.name || '—' %>
-      [<a href="/students/edit/<%= s.id %>">ред.</a>]
-      [<a href="/students/delete/<%= s.id %>">x</a>]
-    </li>
-  <% }) %>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Студенти (Метод: <%= method %>)</title>
+</head>
+<body>
+  <h1>Список студентів (Метод: <%= method %>)</h1>
+  <ul>
+    <% students.forEach(student => { %>
+      <li><%= student.surname %> <%= student.name %> — <%= student.group %></li>
+    <% }); %>
+  </ul>
+  <hr>
+  <a href="/students/sync">Синхронний</a> |
+  <a href="/students/callback">Callback</a> |
+  <a href="/students/promise">Promise</a> |
+  <a href="/students/async">Async/Await</a>
+</body>
+</html>

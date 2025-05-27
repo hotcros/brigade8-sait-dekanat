@@ -1,22 +1,17 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-
+const app = express();
 const groupRoutes = require('./routes/groupRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 
-const app = express();
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/groups', groupRoutes);
 app.use('/students', studentRoutes);
 
-app.get('/', (req, res) => {
-  res.redirect('/groups');
+app.listen(3000, () => {
+  console.log('Сервер працює на http://localhost:3000');
 });
-
-app.listen(3000, () => console.log('Сервер запущено на порту 3000'));
