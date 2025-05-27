@@ -1,0 +1,8 @@
+<%- include('layout', { body: null }) %>
+<h2>Створення нової групи</h2>
+<form action="<%= action %>" method="post">
+  <label>Назва групи:
+    <input name="name" value="<%= group.name || '' %>">
+  </label>
+  <button type="submit">Зберегти</button>
+</form>

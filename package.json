@@ -1,0 +1,24 @@
+{
+  "name": "brigade8-sait-dekanat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotcros/brigade8-sait-dekanat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hotcros/brigade8-sait-dekanat/issues"
+  },
+  "homepage": "https://github.com/hotcros/brigade8-sait-dekanat#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
