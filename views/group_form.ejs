@@ -1,9 +1,0 @@
-<% layout('layout') -%>
-<h2><%= group ? 'Редагувати' : 'Нова' %> група</h2>
-<form method="post" action="/groups/save">
-  <% if (group) { %>
-    <input type="hidden" name="id" value="<%= group.id %>">
-  <% } %>
-  Назва: <input type="text" name="name" value="<%= group?.name || '' %>">
-  <button type="submit">Зберегти</button>
-</form>
