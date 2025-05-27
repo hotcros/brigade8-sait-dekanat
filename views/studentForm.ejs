@@ -1,0 +1,16 @@
+<%- include('layout', { body: null }) %>
+
+<h2>Створення студента</h2>
+
+<form action="<%= action %>" method="post">
+  <label>Прізвище: <input name="lastName" value="<%= student.lastName || '' %>" required></label><br>
+  <label>Ім'я: <input name="firstName" value="<%= student.firstName || '' %>" required></label><br>
+  <label>Група:
+    <select name="groupName" required>
+      <% groups.forEach(group => { %>
+        <option value="<%= group.name %>"><%= group.name %></option>
+      <% }) %>
+    </select>
+  </label><br>
+  <button type="submit">Зберегти</button>
+</form>

@@ -1,9 +1,11 @@
 const studentRepository = require('../repositories/studentRepository');
 
 exports.getAllStudents = async () => {
-  return await studentRepository.getStudents();
+  return studentRepository.getStudents();
 };
 
-exports.searchStudents = async (name, group) => {
-  return await studentRepository.search(name, group);
+exports.addStudent = async (student) => {
+  const students = await studentRepository.getStudents();
+  students.push(student);
+  await studentRepository.saveStudents(students);
 };

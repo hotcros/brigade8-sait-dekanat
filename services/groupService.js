@@ -1,4 +1,4 @@
-const groupRepository = require('.../repositories/groupRepository');
+const groupRepository = require('../repositories/groupRepository');
 
 exports.getAllGroups = async () => {
   return groupRepository.getGroups();

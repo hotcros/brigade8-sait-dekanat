@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const path = '.../data/groups_sync.json';
+const path = './data/groups_sync.json';
 
 exports.getGroups = async () => {
   try {

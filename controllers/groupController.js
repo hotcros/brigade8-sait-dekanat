@@ -1,4 +1,4 @@
-const groupService = require('.../services/groupService');
+const groupService = require('../services/groupService');
 
 exports.listGroups = async (req, res) => {
   const groups = await groupService.getAllGroups();

@@ -1,12 +1,9 @@
 <%- include('layout', { body: null }) %>
-<h2>Студенти</h2>
-<form action="/students/search">
-  <input name="name" placeholder="Прізвище">
-  <input name="group" placeholder="Група">
-  <button type="submit">Пошук</button>
-</form>
+
+<h2>Список студентів</h2>
+<a href="/students/create">+ Додати студента</a>
 <ul>
   <% students.forEach(student => { %>
-    <li><%= student.lastName %> <%= student.firstName %> (<%= student.group %>)</li>
+    <li><%= student.lastName %> <%= student.firstName %> - група: <%= student.groupName %></li>
   <% }) %>
 </ul>

@@ -1,13 +1,15 @@
-const { loadDataAsyncAwait } = require('../utils/dataLoader');
+const fs = require('fs/promises');
+const path = './data/students.json';
 
 exports.getStudents = async () => {
-  return await loadDataAsyncAwait('./data/students_async.json');
+  try {
+    const data = await fs.readFile(path, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
 };
 
-exports.search = async (name, group) => {
-  const all = await this.getStudents();
-  return all.filter(s =>
-    (!name || s.lastName.includes(name)) &&
-    (!group || s.group.includes(group))
-  );
+exports.saveStudents = async (students) => {
+  await fs.writeFile(path, JSON.stringify(students, null, 2), 'utf-8');
 };
