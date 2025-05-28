@@ -1,12 +1,22 @@
 <%- include('layout', { body: null }) %>
+
 <h2>Список груп</h2>
-<a href="/groups/create">+ Додати групу</a>
-<% groups.forEach(group => { %>
-  <li>
-    <%= group.name %>
-    <a href="/groups/edit/<%= group.name %>">Редагувати</a>
-    <form action="/groups/delete/<%= group.name %>" method="post" style="display:inline;">
-      <button type="submit" onclick="return confirm('Видалити групу?')">Видалити</button>
-    </form>
-  </li>
-<% }) %>
+
+<% if (session.role === 'employee') { %>
+  <a href="/groups/create">+ Додати групу</a>
+<% } %>
+
+<ul>
+  <% groups.forEach(group => { %>
+    <li>
+      <%= group.name %>
+
+      <% if (session.role === 'employee') { %>
+        | <a href="/groups/edit/<%= group.name %>">Редагувати</a>
+        <form action="/groups/delete/<%= group.name %>" method="post" style="display:inline;">
+          <button type="submit" onclick="return confirm('Ви впевнені, що хочете видалити групу?')">Видалити</button>
+        </form>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>

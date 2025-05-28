@@ -7,7 +7,14 @@
 <body>
   <nav>
     <a href="/">Головна</a> |
-    <a href="/groups">Групи</a>
+    <a href="/groups">Групи</a> |
+    <a href="/students">Студенти</a> |
+    <% if (!session.role) { %>
+      <a href="/login">Вхід</a>
+    <% } else { %>
+      <span>Роль: <%= session.role %></span> |
+      <a href="/logout">Вийти</a>
+    <% } %>
   </nav>
   <hr>
   <%- body %>
