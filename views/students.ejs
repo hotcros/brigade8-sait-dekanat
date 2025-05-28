@@ -2,8 +2,18 @@
 
 <h2>Список студентів</h2>
 <a href="/students/create">+ Додати студента</a>
-<ul>
-  <% students.forEach(student => { %>
-    <li><%= student.lastName %> <%= student.firstName %> - група: <%= student.groupName %></li>
-  <% }) %>
-</ul>
+<form method="GET" action="/students/search">
+  <input name="lastName" placeholder="Прізвище">
+  <input name="groupName" placeholder="Група">
+  <button type="submit">Пошук</button>
+</form>
+
+<% students.forEach(student => { %>
+  <li>
+    <%= student.lastName %> <%= student.firstName %> - група: <%= student.groupName %>
+    <a href="/students/edit/<%= student.lastName %>/<%= student.firstName %>">Редагувати</a>
+    <form action="/students/delete/<%= student.lastName %>/<%= student.firstName %>" method="post" style="display:inline;">
+      <button type="submit" onclick="return confirm('Видалити студента?')">Видалити</button>
+    </form>
+  </li>
+<% }) %>

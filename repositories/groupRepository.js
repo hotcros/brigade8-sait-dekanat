@@ -1,15 +1,12 @@
-const fs = require('fs/promises');
 const path = './data/groups_sync.json';
+const dataloader = require('../utils/dataloader');
 
-exports.getGroups = async () => {
-  try {
-    const data = await fs.readFile(path, 'utf-8');
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
+exports.getGroups = () => {
+  // Використовуємо проміс
+  return dataloader.loadDataWithPromise(path);
 };
 
 exports.saveGroups = async (groups) => {
+  const fs = require('fs/promises');
   await fs.writeFile(path, JSON.stringify(groups, null, 2), 'utf-8');
 };
